@@ -12,6 +12,7 @@ export const projects: {
   tech: string;
   link: string;
   image?: string;
+  isIcon?: boolean;
 }[] = [
   {
     title: "Holcare Health & Wellness Clinic",
@@ -126,6 +127,51 @@ export const projects: {
     image: "/projects/claimd.jpg",
   },
   {
+    title: "ProConnect NG",
+    description:
+      "Marketplace app that connects you with trusted, verified professionals nearby, such as mechanics, plumbers, electricians and cleaners, with ratings, reviews and easy booking",
+    tech: "iOS App",
+    link: "https://apps.apple.com/us/app/proconnect-ng/id6801954108",
+    image: "/projects/proconnect.jpg",
+    isIcon: true,
+  },
+  {
+    title: "Legwork",
+    description:
+      "Social reward map that pays you in Naira to check in at local shops and discover hidden gems, with digital loyalty cards and bounties for business owners",
+    tech: "iOS App",
+    link: "https://apps.apple.com/us/app/legwork/id6760600594",
+    image: "/projects/legwork.jpg",
+    isIcon: true,
+  },
+  {
+    title: "BizToolz",
+    description:
+      "All-in-one operating system for African entrepreneurs: turn a social profile into a live store, track sales in a performance dashboard and take orders",
+    tech: "iOS App",
+    link: "https://apps.apple.com/us/app/biztoolz/id6760596714",
+    image: "/projects/biztoolz.jpg",
+    isIcon: true,
+  },
+  {
+    title: "Bizmall (iOS App)",
+    description:
+      "Mobile shopping companion for the BizMall store, with a wide product range, secure checkout and a fast, clean interface",
+    tech: "iOS App",
+    link: "https://apps.apple.com/us/app/bizmall/id6759727057",
+    image: "/projects/bizmall-app.jpg",
+    isIcon: true,
+  },
+  {
+    title: "Venmi",
+    description:
+      "No-code, drag-and-drop website builder for business owners and individuals, with responsive templates and e-commerce and blog support",
+    tech: "iOS App",
+    link: "https://apps.apple.com/us/app/venmi/id6483366830",
+    image: "/projects/venmi.jpg",
+    isIcon: true,
+  },
+  {
     title: "Past Question Sharing Platform",
     description:
       "A platform for sharing past questions and answers with other students",
@@ -156,6 +202,7 @@ const techColors = {
   Flutter: "bg-blue-500",
   "Next.js": "bg-zinc-700",
   "Web App": "bg-emerald-500",
+  "iOS App": "bg-sky-500",
   "React Native": "bg-green-500",
   "Vue.js": "bg-purple-500",
   Python: "bg-yellow-500",
@@ -178,9 +225,14 @@ export const Projects = () => {
                     <Image
                       src={p.image}
                       alt={`${p.title} screenshot`}
-                      width={960}
-                      height={600}
-                      className="w-full aspect-video object-cover object-top"
+                      width={p.isIcon ? 256 : 960}
+                      height={p.isIcon ? 256 : 600}
+                      className={cn(
+                        "w-full aspect-video",
+                        p.isIcon
+                          ? "object-contain bg-muted p-4"
+                          : "object-cover object-top"
+                      )}
                     />
                   </Link>
                 )}
