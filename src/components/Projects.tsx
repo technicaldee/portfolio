@@ -13,6 +13,7 @@ export const projects: {
   link: string;
   image?: string;
   isIcon?: boolean;
+  androidLink?: string;
 }[] = [
   {
     title: "Holcare Health & Wellness Clinic",
@@ -127,13 +128,23 @@ export const projects: {
     image: "/projects/claimd.jpg",
   },
   {
-    title: "ProConnect NG",
+    title: "ProConnect",
+    description:
+      "Verified on-demand artisans and emergency services in Nigeria: vetted plumbers, electricians, mechanics and cleaners dispatched to you, with secure escrow and transparent pricing",
+    tech: "Web App",
+    link: "https://proconnect.venmiga.com/",
+    image: "/projects/proconnect-web.jpg",
+    androidLink: "https://play.google.com/store/apps/details?id=com.proconnect.frontend",
+  },
+  {
+    title: "ProConnect NG (Mobile App)",
     description:
       "Marketplace app that connects you with trusted, verified professionals nearby, such as mechanics, plumbers, electricians and cleaners, with ratings, reviews and easy booking",
-    tech: "iOS App",
+    tech: "iOS & Android",
     link: "https://apps.apple.com/us/app/proconnect-ng/id6801954108",
     image: "/projects/proconnect.jpg",
     isIcon: true,
+    androidLink: "https://play.google.com/store/apps/details?id=com.proconnect.frontend",
   },
   {
     title: "Legwork",
@@ -203,6 +214,7 @@ const techColors = {
   "Next.js": "bg-zinc-700",
   "Web App": "bg-emerald-500",
   "iOS App": "bg-sky-500",
+  "iOS & Android": "bg-sky-500",
   "React Native": "bg-green-500",
   "Vue.js": "bg-purple-500",
   Python: "bg-yellow-500",
@@ -245,7 +257,7 @@ export const Projects = () => {
                 <p className="text-sm text-muted-foreground mt-1 mb-4">
                   {p.description}
                 </p>
-                <div className="mt-auto flex items-center justify-between">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center space-x-2">
                     <div
                       className={cn(
@@ -257,13 +269,24 @@ export const Projects = () => {
                       {p.tech}
                     </span>
                   </div>
-                  <Link
-                    href={p.link}
-                    className="flex items-center gap-2 text-sm text-primary hover:underline"
-                  >
-                    View Project
-                    <ExternalLink className="inline-block size-3" />
-                  </Link>
+                  <div className="flex items-center gap-4">
+                    <Link
+                      href={p.link}
+                      className="flex items-center gap-2 text-sm text-primary hover:underline"
+                    >
+                      {p.tech.includes("iOS") ? "App Store" : "View Project"}
+                      <ExternalLink className="inline-block size-3" />
+                    </Link>
+                    {p.androidLink && (
+                      <Link
+                        href={p.androidLink}
+                        className="flex items-center gap-2 text-sm text-primary hover:underline"
+                      >
+                        Android
+                        <ExternalLink className="inline-block size-3" />
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
             </CardContent>
