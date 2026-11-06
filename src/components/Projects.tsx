@@ -13,6 +13,7 @@ export const projects: {
   link: string;
   image?: string;
   isIcon?: boolean;
+  iosLink?: string;
   androidLink?: string;
 }[] = [
   {
@@ -126,6 +127,16 @@ export const projects: {
     tech: "Next.js",
     link: "https://claimd-nu.vercel.app",
     image: "/projects/claimd.jpg",
+  },
+  {
+    title: "TaiChat",
+    description:
+      "Safe, fun messaging app for kids aged 8 to 15: end-to-end encrypted chats, calls and voice notes, parent-approved friends, smart content filters and gamified chats",
+    tech: "Web App",
+    link: "https://taichat.africa/",
+    image: "/projects/taichat.jpg",
+    iosLink: "https://apps.apple.com/us/app/taichat/id6786412566",
+    androidLink: "https://play.google.com/store/apps/details?id=com.taichat.app",
   },
   {
     title: "ProConnect",
@@ -269,7 +280,7 @@ export const Projects = () => {
                       {p.tech}
                     </span>
                   </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3">
                     <Link
                       href={p.link}
                       className="flex items-center gap-2 text-sm text-primary hover:underline"
@@ -277,6 +288,15 @@ export const Projects = () => {
                       {p.tech.includes("iOS") ? "App Store" : "View Project"}
                       <ExternalLink className="inline-block size-3" />
                     </Link>
+                    {p.iosLink && (
+                      <Link
+                        href={p.iosLink}
+                        className="flex items-center gap-2 text-sm text-primary hover:underline"
+                      >
+                        iOS
+                        <ExternalLink className="inline-block size-3" />
+                      </Link>
+                    )}
                     {p.androidLink && (
                       <Link
                         href={p.androidLink}
